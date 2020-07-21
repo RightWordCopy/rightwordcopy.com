@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+console.log(`Using Environment: ${process.env.NODE_ENV}`)
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -12,6 +16,16 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+        dataset: process.env.GATSBY_SANITY_DATASET,
+        token: process.env.GATSBY_SANITY_TOKEN,
+        overlayDrafts: true,
+        watchMode: process.env.NODE_ENV === "development" ? true : false,
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
