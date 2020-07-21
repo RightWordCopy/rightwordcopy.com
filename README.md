@@ -1,0 +1,1 @@
+# rightwordcopy.com
