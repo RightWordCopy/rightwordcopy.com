@@ -1,3 +1,4 @@
+
 export default {
   title: 'Body Section',
   name: 'bodySection',
@@ -7,13 +8,22 @@ export default {
   ],
   preview: {
     select: {
-      subtitle: 'content.0.children.0.text'
+      subtitle: 'content.0',
+      media: 'content.0'
     },
-    prepare: ({ subtitle, title }) => {
-      const subText = subtitle.length > 70 ? `${subtitle.substring(0, 67)}...` : subtitle
-      return {
-        title: 'Body Section',
-        subtitle: subtitle ? subText : ''
+    prepare: ({ subtitle, title, media }) => {
+      if (subtitle === 'mainImage') {
+        return {
+          title: 'Body Section',
+          media
+        }
+      } else {
+        const text = subtitle.children ? subtitle.children[0]?.text : ''
+        const subText = text.length > 70 ? `${text.substring(0, 67)}...` : text
+        return {
+          title: 'Body Section',
+          subtitle: subtitle ? subText : ''
+        }
       }
     }
   }
