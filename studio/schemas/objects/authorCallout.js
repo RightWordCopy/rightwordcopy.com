@@ -12,6 +12,12 @@ export default {
       },
     },
     {
+      type: 'simpleBlockContent',
+      name: 'authorBio',
+      title: 'Title',
+      description: 'Enter a short title/tagline/description'
+    },
+    {
       name: 'ctas',
       type: 'array',
       of: [

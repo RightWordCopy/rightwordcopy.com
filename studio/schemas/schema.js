@@ -15,12 +15,13 @@ import mainImage from './objects/mainImage'
 import openGraph from './objects/openGraph'
 import simpleBlockContent from './objects/simpleBlockContent'
 import socialLink from './objects/socialLink'
-import bodySection from './plugs/body'
-import ctaPlugs from './plugs/ctaPlugs'
+import * as plugs from './plugs'
+import plugDefaultFields from './plugs/_plugDefaultFields'
 
 
-
-
+const allPlugs = Object.values(plugs).map((plug) => {
+  return { ...plug, fields: plugDefaultFields.concat(plug.fields) }
+})
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -40,9 +41,7 @@ export default createSchema({
     cta,
     route,
     bodyPortableText,
-    bodySection,
     authorCallout,
-    ctaPlugs,
     simpleBlockContent
-  ])
+  ]).concat(allPlugs)
 })
