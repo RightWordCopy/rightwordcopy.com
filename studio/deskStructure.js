@@ -1,7 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { GoHome, GoSettings } from 'react-icons/go'
+import { FcHome } from 'react-icons/fc'
+import { GoSettings } from 'react-icons/go'
 import landingPages from './src/structure/landingPages'
-
+import portfolio from './src/structure/portfolio'
 const hiddenDocTypes = (listItem) => {
   !['route', 'navigationMenu', 'post', 'page', 'siteSettings', 'author', 'category'].includes(listItem.getId())
 }
@@ -12,22 +13,26 @@ export default () =>
     .items([
       S.documentListItem()
         .schemaType('siteSettings')
+        .id('siteSettings')
         .title('Site Settings')
         .icon(GoSettings)
         .child(
-          S.document()
+          S.editor()
             .schemaType('siteSettings')
             .documentId('siteSettings')
         ),
       S.documentListItem()
         .title('Frontpage')
         .schemaType('page')
-        .icon(GoHome)
+        .icon(FcHome)
         .child(
           S.document()
             .schemaType('page')
             .documentId('frontpage')
         ),
       landingPages,
-      ...S.documentTypeListItems().filter(hiddenDocTypes)
+      portfolio,
+      ...S.documentTypeListItems().filter(hiddenDocTypes),
+
+
     ])

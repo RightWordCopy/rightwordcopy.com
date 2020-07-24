@@ -1,9 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
+import { FcFolder } from 'react-icons/fc'
 import { MdMenu } from 'react-icons/md'
 
 
 export default S.listItem()
   .title('Page Builder')
+  .icon(FcFolder)
   .child(
     S.list()
       .title('Landing Pages')

@@ -5,10 +5,11 @@ import createSchema from 'part:@sanity/base/schema-creator'
 // document schemas
 import navMenu from './documents/navMenu'
 import page from './documents/page'
+import portfolio from './documents/portfolio'
 import route from './documents/route'
 import siteSettings from './documents/siteSettings'
-import authorCallout from './objects/authorCallout'
 // object schemas
+import authorCallout from './objects/authorCallout'
 import bodyPortableText from './objects/bodyPortableText'
 import cta from './objects/cta'
 import mainImage from './objects/mainImage'
@@ -40,6 +41,7 @@ export default createSchema({
     page,
     cta,
     route,
+    portfolio,
     bodyPortableText,
     authorCallout,
     simpleBlockContent
