@@ -1,5 +1,5 @@
 import { FcOpenedFolder } from "react-icons/fc";
-
+import { customSlugify } from '../../src/utils';
 export default {
   name: 'portfolio',
   title: 'Portfolio',
@@ -28,6 +28,16 @@ export default {
       name: 'title',
       type: 'string',
       title: 'Title'
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      description: 'Click generate to create a link to this project!',
+      options: {
+        source: (doc) => `/portfolio/${doc.title}`,
+        slugify: customSlugify,
+      },
     },
     {
       name: 'projectDescription',
