@@ -1,6 +1,6 @@
-import { graphql } from "gatsby";
+const { graphql } = require("gatsby");
 
-export const SanityImage = graphql`
+const SanityImage = `
   fragment SanityImage on SanityMainImage {
     alt
     crop {
@@ -32,3 +32,5 @@ export const SanityImage = graphql`
     }
   }
 `;
+
+module.exports.SanityImage = SanityImage

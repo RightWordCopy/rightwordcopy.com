@@ -1,6 +1,5 @@
-import { graphql } from 'gatsby'
 
-export const PageInfo = graphql`
+const PageInfo = `
   fragment PageInfo on SanityPage {
     id
     title
@@ -10,3 +9,4 @@ export const PageInfo = graphql`
     _rawContent(resolveReferences: {maxDepth: 10})
   }
 `
+module.exports.PageInfo = PageInfo

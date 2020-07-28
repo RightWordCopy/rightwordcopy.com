@@ -4,9 +4,9 @@ require("dotenv").config({
 console.log(`Using Environment: ${process.env.NODE_ENV}`)
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Right Word Copy - Superior, Professional Copy Writing Services`,
+    description: `As a professional copywriter, I’m here to share my skill with words, and help you get your message out in the most effective way possible.`,
+    author: `@lqm_19`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

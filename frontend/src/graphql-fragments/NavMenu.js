@@ -1,21 +1,12 @@
-import { graphql } from 'gatsby'
 
-export const NavMenu = graphql`
+const NavMenu = `
   fragment NavMenu on SanityNavigationMenu {
     items {
       title
       kind
       link
       route
-      landingPageRoute {
-        ... on SanityRoute {
-          id
-          _type
-          slug {
-            current
-          }
-        }
-      }
     }
   }
 `
+module.exports.NavMenu = NavMenu
