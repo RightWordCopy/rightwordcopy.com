@@ -5,3 +5,8 @@
  */
 
 // You can delete this file if you're not using it
+import 'typeface-amiri';
+import 'typeface-fondamento';
+import 'typeface-kalam';
+import './src/sass/main.scss';
+

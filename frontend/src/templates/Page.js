@@ -29,10 +29,10 @@ const PageTemplate = ({ pageContext: { page, meta } }) => {
         case "uiComponentRef":
           switch (c.name) {
             case "portfolio":
-              el = <Portfolio />;
+              el = <Portfolio key={c.name} />;
               break;
             case "contactForm":
-              el = <ContactForm />;
+              el = <ContactForm key={c.name} />;
               break;
             default:
               break;

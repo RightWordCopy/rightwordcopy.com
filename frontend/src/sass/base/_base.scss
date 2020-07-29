@@ -1,0 +1,53 @@
+html {
+  // This defines 1rem
+  // set to 62.5% so that 1rem = 10px
+  // converting 1rem to a base10 value
+  font-size: 62.5%;
+
+  @include respond(md) {
+    font-size: 60%;
+  }
+  @include respond(lg) {
+    font-size: 70%;
+  }
+  @include respond(xl) {
+    font-size: 80%;
+  }
+
+  /**
+  * setup all variables
+  */
+  --site-background:#DEDBD5;
+  --green-primary:#5C734C;
+  --green-accent: #A7BF8F;
+  --green-light: #C8E0B8;
+  --site-black:#12180C;
+  --gray-light: #EBEBEB;
+  --max-width: 168rem;
+  --font-size-default: 1.8rem;
+  --font-stack-kalam: "Kalam", "-apple-system", "BlinkMacSystemFont",
+  "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif";
+  --font-stack-fondamento: "Fondamento", 'Pristina', 'Rage Italic', 'Script MT Bold', 'Segoe Script',' Vivaldi','serif' ;
+  --font-stack-amiri: "Amiri", "Lucida Bright", "Lucidabright",
+  "Lucida Serif", "Lucida", "DejaVu Serif", "Bitstream Vera Serif",
+  "Liberation Serif", Georgia, serif;
+  --line-height: 1.5
+
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--site-background);
+}
+
+
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @include respond(md) {
+    max-width:var(--max-width);
+  }
+}
+

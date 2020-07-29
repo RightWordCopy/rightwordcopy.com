@@ -1,0 +1,22 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == iphoneX {
+    @media (min-width: 23.4em) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (min-width: 48em) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: 62.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: 74.5em) {
+      @content;
+    }
+  }
+}
