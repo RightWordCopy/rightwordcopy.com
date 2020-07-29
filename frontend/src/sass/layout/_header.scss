@@ -2,6 +2,7 @@
   background: rgba(225, 225, 225, 0.1);
   position: sticky;
   top: 0;
+  z-index: 5000;
   transition: background-color 200ms ease-in;
   &--scrolled {
     background-color: white;

@@ -7,7 +7,7 @@ const Layout = ({ children, navMenuItems }) => {
     <>
       <Header navItems={navMenuItems} />
 
-      <main className="wrapper">{children}</main>
+      <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}

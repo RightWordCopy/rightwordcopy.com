@@ -1,7 +1,7 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import { useScrollPosition } from "../hooks/useScrollPosition"
+import UniversalLink from "./UniversalLink"
 const Header = ({ navItems }) => {
   const [isHeaderScrolled, setIsHeaderScrolled] = useState("")
   useScrollPosition(
@@ -20,9 +20,12 @@ const Header = ({ navItems }) => {
           {navItems &&
             navItems.map(({ route, title }, index) => (
               <li className="navigation__item" key={index}>
-                <Link activeClassName="navigation__item--active" to={route}>
+                <UniversalLink
+                  activeClassName="navigation__item--active"
+                  to={route}
+                >
                   {title}
-                </Link>
+                </UniversalLink>
               </li>
             ))}
         </ul>
