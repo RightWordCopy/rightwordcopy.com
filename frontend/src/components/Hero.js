@@ -3,7 +3,7 @@ import BackgroundImage from "gatsby-background-image"
 import { getFluidGatsbyImage } from "gatsby-source-sanity"
 import React from "react"
 import clientConfig from "../../client.config"
-import CTA from "./CTA"
+import CTALink from "./CTALink"
 import PortableText from "./PortableText"
 const Hero = ({ heading, illustration: { image }, tagline, cta }) => {
   const {
@@ -39,7 +39,7 @@ const Hero = ({ heading, illustration: { image }, tagline, cta }) => {
       <div className="hero__inner wrapper">
         {heading && <h1 dangerouslySetInnerHTML={{ __html: `${heading}` }} />}
         {tagline && <PortableText blocks={tagline} />}
-        {cta && cta.title && <CTA {...cta} />}
+        {cta && cta.title && <CTALink {...cta} />}
       </div>
     </BackgroundImage>
   )

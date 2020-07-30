@@ -3,9 +3,10 @@ import React from "react"
 import clientConfig from "../../client.config"
 import serializers from "./serializers"
 
-const PortableText = ({ blocks }) => {
+const PortableText = ({ blocks, className }) => {
   return (
     <BaseBlockContent
+      className={`wrapper portable-text ${className} `}
       blocks={blocks}
       serializers={serializers}
       {...clientConfig.sanity}

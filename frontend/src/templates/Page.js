@@ -1,5 +1,8 @@
 import React from "react"
+import AuthorCallout from "../components/AuthorCallout"
+import BodySection from "../components/BodySection"
 import ContactForm from "../components/ContactForm"
+import CTAction from "../components/CTAction"
 import Hero from "../components/Hero"
 import Layout from "../components/layout"
 import Portfolio from "../components/Portfolio"
@@ -24,28 +27,13 @@ const PageTemplate = ({ pageContext: { page, meta } }) => {
           el = <Hero key={c._key} {...c} />
           break
         case "bodySection":
-          el = (
-            <pre
-              style={{ marginBottom: `40px`, background: `red` }}
-              key={c._key}
-            >
-              {JSON.stringify(c, null, 2)}
-            </pre>
-          )
+          el = <BodySection key={c._key} {...c} />
           break
         case "authorCallout":
-          el = (
-            <pre style={{ marginBottom: `40px` }} key={c._key}>
-              {JSON.stringify(c, null, 2)}
-            </pre>
-          )
+          el = <AuthorCallout key={c._key} {...c} />
           break
         case "ctaPlug":
-          el = (
-            <pre style={{ marginBottom: `40px` }} key={c._key}>
-              {JSON.stringify(c, null, 2)}
-            </pre>
-          )
+          el = <CTAction key={c._key} {...c} />
           break
         case "uiComponentRef":
           switch (c.name) {

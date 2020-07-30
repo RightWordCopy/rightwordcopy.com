@@ -8,10 +8,13 @@
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/author-callout";
 @import "components/cta";
 @import "components/hero";
+@import "components/portable-text";
 
 @import "layout/footer";
+@import "layout/cta-section";
 @import "layout/header";
 @import "layout/grid";
 @import "layout/navigation";

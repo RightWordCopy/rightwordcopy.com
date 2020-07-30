@@ -23,6 +23,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^3.10.0",
     "typeface-amiri": "0.0.61",
     "typeface-fondamento": "0.0.71",
     "typeface-kalam": "0.0.72"

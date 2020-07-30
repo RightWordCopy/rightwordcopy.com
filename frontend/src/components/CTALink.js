@@ -1,8 +1,7 @@
 import React from "react"
 import UniversalLink from "./UniversalLink"
 
-const CTA = props => {
-  console.log(props)
+const CTALink = props => {
   let link = props.route || props.link || "#"
   if (
     props.sitePageRoute &&
@@ -45,4 +44,4 @@ const CTA = props => {
   )
 }
 
-export default CTA
+export default CTALink

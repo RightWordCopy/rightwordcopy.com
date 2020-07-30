@@ -1,0 +1,34 @@
+.footer {
+  padding: 4rem 0;
+  background-color: var(--gray-light);
+
+  h2 {
+    text-align: center;
+  }
+  small {
+    font-size: 1.6rem;
+    display: block;
+    color: var(--green-accent);
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &__social-links {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+
+    svg {
+      height: 100%;
+      width: auto;
+    }
+    > li {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+    a {
+      color: var(--green-accent);
+    }
+  }
+}

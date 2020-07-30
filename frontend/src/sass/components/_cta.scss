@@ -1,4 +1,7 @@
 .cta {
+  // display:grid styles
+  align-self: center;
+
   color: var(--green-accent);
 
   &__button {
@@ -9,7 +12,14 @@
       color: var(--site-background);
       font-family: var(--font-stack-fondamento);
       text-decoration: none;
-      box-shadow: 0 0px -4px rgba(0, 0, 0, 0.64);
+      box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.64);
+    }
+    &:nth-child(2) {
+      background: var(--green-light);
+      color: var(--site-black);
+      font-family: var(--font-stack-fondamento);
+      text-decoration: none;
+      box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.64);
     }
     &:hover,
     &:focus {

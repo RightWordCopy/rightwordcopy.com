@@ -1,4 +1,6 @@
 import React from "react"
+import CTALink from "./CTALink"
+import PortableTextList from "./PortableTextList"
 import UniversalLink from "./UniversalLink"
 const serializers = {
   marks: {
@@ -8,6 +10,10 @@ const serializers = {
       )
     },
   },
+  types: {
+    cta: ({ node }) => <CTALink {...node} />,
+  },
+  list: PortableTextList,
 }
 
 export default serializers
