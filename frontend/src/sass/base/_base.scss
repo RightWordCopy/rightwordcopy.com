@@ -17,22 +17,22 @@ html {
   /**
   * setup all variables
   */
-  --site-background:#DEDBD5;
-  --green-primary:#5C734C;
-  --green-accent: #A7BF8F;
-  --green-light: #C8E0B8;
-  --site-black:#12180C;
-  --gray-light: #EBEBEB;
+  --site-background: #dedbd5;
+  --green-primary: #5c734c;
+  --green-accent: #a7bf8f;
+  --green-light: #c8e0b8;
+  --site-black: #12180c;
+  --gray-light: #ebebeb;
   --max-width: 168rem;
   --font-size-default: 1.8rem;
-  --font-stack-kalam: "Kalam", "-apple-system", "BlinkMacSystemFont",
-  "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif";
-  --font-stack-fondamento: "Fondamento", 'Pristina', 'Rage Italic', 'Script MT Bold', 'Segoe Script',' Vivaldi','serif' ;
-  --font-stack-amiri: "Amiri", "Lucida Bright", "Lucidabright",
-  "Lucida Serif", "Lucida", "DejaVu Serif", "Bitstream Vera Serif",
-  "Liberation Serif", Georgia, serif;
-  --line-height: 1.5
-
+  --font-stack-kalam: "Kalam", "-apple-system", "BlinkMacSystemFont", "Segoe UI",
+    "Roboto", "Helvetica", "Arial", "sans-serif";
+  --font-stack-fondamento: "Fondamento", "Pristina", "Rage Italic",
+    "Script MT Bold", "Segoe Script", " Vivaldi", "serif";
+  --font-stack-amiri: "Amiri", "Lucida Bright", "Lucidabright", "Lucida Serif",
+    "Lucida", "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif",
+    Georgia, serif;
+  --line-height: 1.5;
 }
 
 body {
@@ -40,14 +40,12 @@ body {
   background-color: var(--site-background);
 }
 
-
 .wrapper {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
 
   @include respond(md) {
-    max-width:var(--max-width);
+    max-width: var(--max-width);
   }
 }
-

@@ -29,14 +29,17 @@ const Hero = ({ heading, illustration: { image }, tagline, cta }) => {
           clientConfig.sanity
         )
       : fluid
-
-  const backgroundFluidImageStack = [fluidProps].reverse()
+  const heroGradient =
+    !!heading || !!tagline || !!cta.title
+      ? `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))`
+      : `linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0))`
+  const backgroundFluidImageStack = [fluidProps, heroGradient].reverse()
   return (
     <BackgroundImage fluid={backgroundFluidImageStack} className="hero">
-      <div className="hero__inner-content wrapper">
+      <div className="hero__inner wrapper">
         {heading && <h1 dangerouslySetInnerHTML={{ __html: `${heading}` }} />}
         {tagline && <PortableText blocks={tagline} />}
-        {cta && <CTA {...cta} />}
+        {cta && cta.title && <CTA {...cta} />}
       </div>
     </BackgroundImage>
   )

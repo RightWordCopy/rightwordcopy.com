@@ -1,18 +1,5 @@
-import { navigate } from "gatsby"
 import React from "react"
 import UniversalLink from "./UniversalLink"
-
-const doNavigate = target => {
-  if (!target || !target.length) {
-    return
-  }
-  const internal = /^\/(?!\/)/.test(target)
-  if (internal) {
-    navigate(target)
-  } else {
-    window.location = target
-  }
-}
 
 const CTA = props => {
   console.log(props)
@@ -30,7 +17,7 @@ const CTA = props => {
       <UniversalLink
         id="navAction"
         to={link}
-        className={props.buttonActionClass || `${props.kind}`}
+        className={props.buttonActionClass || `cta cta__${props.kind}`}
       >
         {props.title}
       </UniversalLink>
@@ -40,13 +27,22 @@ const CTA = props => {
   // External
   if (props.link) {
     return (
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <a
+        href={props.link}
+        className="cta cta__link--external"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {props.title}
       </a>
     )
   }
 
-  return <UniversalLink to={link}>{props.title}</UniversalLink>
+  return (
+    <UniversalLink className={`cta cta__${props.kind}`} to={link}>
+      {props.title}
+    </UniversalLink>
+  )
 }
 
 export default CTA

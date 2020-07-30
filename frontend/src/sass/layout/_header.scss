@@ -1,7 +1,9 @@
 .header {
-  background: rgba(225, 225, 225, 0.1);
-  position: sticky;
+  background: rgba(225, 225, 225, 0.8);
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 5000;
   transition: background-color 200ms ease-in;
   &--scrolled {

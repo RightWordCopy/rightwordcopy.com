@@ -1,0 +1,26 @@
+.cta {
+  color: var(--green-accent);
+
+  &__button {
+    padding: 1rem 2rem;
+    transition: all 200ms ease;
+    &:first-of-type {
+      background: var(--green-primary);
+      color: var(--site-background);
+      font-family: var(--font-stack-fondamento);
+      text-decoration: none;
+      box-shadow: 0 0px -4px rgba(0, 0, 0, 0.64);
+    }
+    &:hover,
+    &:focus {
+      box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+      filter: brightness(125%);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      box-shadow: none;
+      filter: brightness(90%);
+    }
+  }
+}
