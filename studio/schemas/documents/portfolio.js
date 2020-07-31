@@ -1,48 +1,55 @@
 import { FcOpenedFolder } from "react-icons/fc";
-import { customSlugify } from '../../src/utils';
+import { customSlugify } from "../../src/utils";
 export default {
-  name: 'portfolio',
-  title: 'Portfolio',
-  type: 'document',
+  name: "portfolio",
+  title: "Portfolio",
+  type: "document",
   icon: FcOpenedFolder,
   preview: {
     select: {
-      title: 'title',
-      media: 'featuredImage'
+      title: "title",
+      media: "featuredImage",
     },
     prepare: ({ title, media }) => {
-      console.log(media)
+      console.log(media);
       return {
         title,
-        media: media.image ? media.image : ''
-      }
-    }
+        media: media.image ? media.image : "",
+      };
+    },
   },
   fields: [
     {
-      name: 'featuredImage',
-      type: 'illustration',
-      title: 'Featured Image'
+      name: "featuredImage",
+      type: "illustration",
+      title: "Featured Image",
     },
     {
-      name: 'title',
-      type: 'string',
-      title: 'Title'
+      name: "title",
+      type: "string",
+      title: "Title",
     },
     {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      description: 'Click generate to create a link to this project!',
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      description: "Click generate to create a link to this project!",
       options: {
         source: (doc) => `/portfolio/${doc.title}`,
         slugify: customSlugify,
       },
     },
     {
-      name: 'projectDescription',
-      title: 'Project Description',
-      type: 'bodyPortableText'
+      name: "projectExcerpt",
+      title: "Excerpt",
+      type: "simpleBlockContent",
+      description:
+        "Add a brief description of the project (e.g. what kind of project was it?)",
+    },
+    {
+      name: "projectDescription",
+      title: "Project Description",
+      type: "bodyPortableText",
     },
     {
       name: "imageGallery",
@@ -51,6 +58,5 @@ export default {
       type: "array",
       of: [{ type: "mainImage" }],
     },
-
-  ]
-}
+  ],
+};
