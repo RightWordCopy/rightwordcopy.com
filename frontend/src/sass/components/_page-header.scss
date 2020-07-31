@@ -29,6 +29,7 @@
   .paragraph {
     text-align: center;
     padding: 0 2rem 2rem 2rem;
+    width: 98%;
     max-width: calc(var(--max-width) / 2.5);
     margin: 0 auto;
     &:last-child {

@@ -67,7 +67,6 @@ async function createLandingPages(
       useSiteTitle,
       includeInSitemap,
     } = edge.node
-    console.log(edge)
     const meta = {}
     meta.title = useSiteTitle
       ? result.data.site.openGraph.title
