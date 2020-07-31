@@ -5,6 +5,7 @@ import ContactForm from "../components/ContactForm"
 import CTAction from "../components/CTAction"
 import Hero from "../components/Hero"
 import Layout from "../components/layout"
+import PageHeader from "../components/PageHeader"
 import Portfolio from "../components/Portfolio"
 const PageTemplate = ({
   pageContext: { page, meta },
@@ -17,14 +18,7 @@ const PageTemplate = ({
       let el = null
       switch (c._type) {
         case "pageHeader":
-          el = (
-            <pre
-              style={{ marginBottom: `40px`, background: `red` }}
-              key={c._key}
-            >
-              {JSON.stringify(c, null, 2)}
-            </pre>
-          )
+          el = <PageHeader key={c._key} {...c} />
           break
         case "hero":
           el = <Hero key={c._key} {...c} />
