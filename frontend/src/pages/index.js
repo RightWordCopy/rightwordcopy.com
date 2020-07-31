@@ -1,21 +1,21 @@
-import { graphql } from 'gatsby'
-import React from 'react'
-import PageTemplate from '../templates/Page'
+import { graphql } from "gatsby"
+import React from "react"
+import PageTemplate from "../templates/Page"
 
-const IndexPage = ({ data, errors }) => {
+const IndexPage = ({ data, errors, location }) => {
   if (errors) {
     console.error(errors)
   }
 
   const pageData = { ...data, meta: data.site.openGraph }
-  return <PageTemplate pageContext={pageData} />
+  return <PageTemplate pageContext={pageData} location={location} />
 }
 
 export default IndexPage
 
 export const IndexPageQuery = graphql`
   query IndexQuery {
-    page: sanityPage(_id: {eq: "frontpage"}) {
+    page: sanityPage(_id: { eq: "frontpage" }) {
       id
       title
       navMenu {
@@ -26,50 +26,50 @@ export const IndexPageQuery = graphql`
           title
         }
       }
-      _rawContent(resolveReferences: {maxDepth: 10})
+      _rawContent(resolveReferences: { maxDepth: 10 })
     }
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
-        primaryColor {
-          hex
-        }
-        secondaryColor {
-          hex
-        }
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      primaryColor {
+        hex
+      }
+      secondaryColor {
+        hex
+      }
+      title
+      openGraph {
         title
-        openGraph {
-          title
-          description
-          image {
-            alt
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-              metadata {
-                lqip
-                dimensions {
-                  aspectRatio
-                  width
-                  height
-                }
+        description
+        image {
+          alt
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+            metadata {
+              lqip
+              dimensions {
+                aspectRatio
+                width
+                height
               }
             }
           }
         }
       }
+    }
   }
 `

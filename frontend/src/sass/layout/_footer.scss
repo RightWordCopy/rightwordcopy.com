@@ -18,17 +18,19 @@
     list-style: none;
     justify-content: center;
 
-    svg {
-      height: 100%;
-      width: auto;
-    }
     > li {
       &:not(:last-child) {
         margin-right: 2rem;
       }
     }
     a {
+      font-size: 2.4em;
+      display: block;
       color: var(--green-accent);
+
+      svg {
+        vertical-align: middle;
+      }
     }
   }
 }

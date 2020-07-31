@@ -15,7 +15,7 @@ const iconArray = {
   snapchat: <FaSnapchat />,
 }
 
-const Layout = ({ children, navMenuItems }) => {
+const Layout = ({ children, navMenuItems, className }) => {
   const {
     sanitySiteSettings: { _rawSocialLinks },
   } = useStaticQuery(graphql`
@@ -25,12 +25,11 @@ const Layout = ({ children, navMenuItems }) => {
       }
     }
   `)
-  console.log(_rawSocialLinks)
   return (
     <>
       <Header navItems={navMenuItems} />
 
-      <main>{children}</main>
+      <main className={className}>{children}</main>
       <footer className="footer">
         <div className="wrapper">
           <h2>Follow Me!</h2>

@@ -14,9 +14,15 @@ export default ({ node }) => {
   )
 
   return (
-    <figure>
+    <figure className="figure">
       <Img fluid={fluidProps} alt={node.alt} />
-      {node.caption && <figcaption>{node.caption}</figcaption>}
+      {node.caption && (
+        <figcaption
+          style={{ textAlign: `center`, color: `var(--green-primary)` }}
+        >
+          {node.caption}
+        </figcaption>
+      )}
     </figure>
   )
 }

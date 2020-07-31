@@ -6,7 +6,10 @@ import CTAction from "../components/CTAction"
 import Hero from "../components/Hero"
 import Layout from "../components/layout"
 import Portfolio from "../components/Portfolio"
-const PageTemplate = ({ pageContext: { page, meta } }) => {
+const PageTemplate = ({
+  pageContext: { page, meta },
+  location: { pathname },
+}) => {
   // return components from _rawContent that are not disabled
   const content = (page._rawContent || [])
     .filter(c => !c.disabled)
@@ -55,7 +58,11 @@ const PageTemplate = ({ pageContext: { page, meta } }) => {
 
   const menuItems = page.navMenu && (page.navMenu.items || [])
 
-  return <Layout navMenuItems={menuItems}>{content}</Layout>
+  return (
+    <Layout className={pathname.replace("/", "")} navMenuItems={menuItems}>
+      {content}
+    </Layout>
+  )
 }
 
 export default PageTemplate

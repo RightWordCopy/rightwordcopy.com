@@ -4,6 +4,7 @@ import clientConfig from "../../client.config"
 import serializers from "./serializers"
 
 const PortableText = ({ blocks, className }) => {
+  console.log(blocks)
   return (
     <BaseBlockContent
       className={`wrapper portable-text ${className} `}

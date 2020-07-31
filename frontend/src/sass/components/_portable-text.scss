@@ -37,6 +37,9 @@
       max-width: 35vw;
     }
   }
+  > figure {
+    width: 100%;
+  }
 
   .list__multi-column {
     grid-column: 1/-1;

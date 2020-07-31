@@ -1,6 +1,24 @@
 .cta-section {
   background: var(--green-accent);
   padding: 4rem 0;
-  display: flex;
-  justify-content: space-around;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__content {
+    &:last-child {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-family: var(--font-stack-amiri);
+      font-weight: normal;
+
+      &:only-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
