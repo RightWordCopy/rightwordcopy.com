@@ -85,9 +85,70 @@ async function createLandingPages(
   })
 }
 
-exports.createPagesStatefully = async (
-  { graphql, actions, reporter },
-  options
-) => {
+async function createPortfolioPages(
+  pathPrefix = "/",
+  graphql,
+  actions,
+  reporter
+) {
+  const { createPage } = actions
+  const result = await graphql(`
+    query GET_PORTFOLIO_ITEMS {
+      allSanityPortfolio {
+        totalCount
+        edges {
+          next {
+            slug {
+              current
+            }
+          }
+          previous {
+            slug {
+              current
+            }
+          }
+          node {
+            title
+            id
+            _rawImageGallery(resolveReferences: { maxDepth: 10 })
+            _rawFeaturedImage(resolveReferences: { maxDepth: 10 })
+            _rawProjectDescription(resolveReferences: { maxDepth: 10 })
+            _rawProjectExcerpt(resolveReferences: { maxDepth: 10 })
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const portfolioEdges = (result.data.allSanityPortfolio || {}).edges || []
+  const count = result.data.allSanityPortfolio.totalCount
+  portfolioEdges.forEach(edge => {
+    const prev = edge.previous
+    const next = edge.next
+    const path = [pathPrefix, edge.node.slug.current, "/"].join("")
+    reporter.info(`Creating landing page: ${path}`)
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/Portfolio.js"),
+      context: {
+        id: edge.node.id,
+        project: edge.node,
+        pagination: {
+          prev,
+          next,
+        },
+      },
+    })
+  })
+}
+
+exports.createPages = async ({ graphql, actions, reporter }, options) => {
   await createLandingPages("/", graphql, actions, reporter)
+  await createPortfolioPages("", graphql, actions, reporter)
 }

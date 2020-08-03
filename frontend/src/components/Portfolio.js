@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Figure from "./Figure"
+import PortableText from "./PortableText"
 import UniversalLink from "./UniversalLink"
 const Portfolio = () => {
   const {
@@ -13,6 +14,7 @@ const Portfolio = () => {
             id
             _rawFeaturedImage(resolveReferences: { maxDepth: 10 })
             _rawSlug(resolveReferences: { maxDepth: 10 })
+            _rawProjectExcerpt(resolveReferences: { maxDepth: 10 })
             title
           }
         }
@@ -24,11 +26,6 @@ const Portfolio = () => {
     <section className="portfolio-list wrapper">
       {edges &&
         edges.map(({ node }) => {
-          console.log(node._rawProjectDescription)
-          const excerpt = node._rawProjectDescription
-            ? node._rawProjectDescription.slice(0, 3)
-            : []
-
           const hasIllustration =
             !!node._rawFeaturedImage &&
             !node._rawFeaturedImage.disabled &&
@@ -36,12 +33,21 @@ const Portfolio = () => {
           return (
             <article className="portfolio-card" key={node.id}>
               {hasIllustration && (
-                <Figure node={node._rawFeaturedImage.image} />
+                <UniversalLink to={node._rawSlug.current}>
+                  <Figure
+                    className="portfolio-card__illustration"
+                    node={node._rawFeaturedImage.image}
+                  />
+                </UniversalLink>
               )}
-              {node.title && (
-                <h2 className="portfolio-card__title">{node.title}</h2>
-              )}
-
+              <div className="portfolio-card__content">
+                {node.title && (
+                  <h2 className="portfolio-card__title">{node.title}</h2>
+                )}
+                {node._rawProjectExcerpt && (
+                  <PortableText blocks={node._rawProjectExcerpt} />
+                )}
+              </div>
               <UniversalLink className="cta__button" to={node._rawSlug.current}>
                 More Info
               </UniversalLink>

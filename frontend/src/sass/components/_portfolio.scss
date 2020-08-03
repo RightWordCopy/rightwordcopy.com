@@ -1,0 +1,38 @@
+.portfolio-list {
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  column-gap: 4rem;
+  align-items: flex-start;
+
+  .portfolio-card {
+    background: var(--gray-light);
+    display: flex;
+    flex-direction: column;
+
+    &__illustration {
+      margin-bottom: 0rem;
+      transition: all 200ms ease;
+      filter: sepia(50%);
+      &:hover {
+        filter: initial;
+      }
+    }
+
+    &__content {
+      padding: 2rem;
+
+      > .paragraph {
+        font-size: calc(var(--font-size-default) / 1.125);
+        margin: 0;
+      }
+    }
+    .cta__button {
+      margin: 0 2rem 2rem 0;
+      background: var(--green-primary);
+      color: var(--site-background);
+      font-family: var(--font-stack-fondamento);
+      align-self: flex-end;
+    }
+  }
+}

@@ -11,7 +11,6 @@ export default {
       media: "featuredImage",
     },
     prepare: ({ title, media }) => {
-      console.log(media);
       return {
         title,
         media: media.image ? media.image : "",
@@ -44,8 +43,13 @@ export default {
       title: "Excerpt",
       type: "simpleBlockContent",
       description:
-        "Add a brief description of the project (e.g. what kind of project was it?)",
+        "Add a brief (<140 characters) description of the project (e.g. what kind of project was it?)",
+      validation: (Rule) =>
+        Rule.required()
+          .max(140)
+          .error("Titles must be less than 140 characters."),
     },
+
     {
       name: "projectDescription",
       title: "Project Description",
