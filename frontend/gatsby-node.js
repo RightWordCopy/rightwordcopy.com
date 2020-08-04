@@ -77,7 +77,7 @@ async function createLandingPages(
     meta.description =
       openGraph.description || result.data.site.openGraph.description
     meta.image = !useSiteTitle && openGraph.image
-    const path = [pathPrefix, slug.current, "/"].join("")
+    const path = [pathPrefix, slug.current].join("")
     reporter.info(`Creating landing page: ${path}`)
     createPage({
       path,
@@ -131,7 +131,7 @@ async function createPortfolioPages(
   portfolioEdges.forEach(edge => {
     const prev = edge.previous
     const next = edge.next
-    const path = [pathPrefix, edge.node.slug.current, "/"].join("")
+    const path = [pathPrefix, edge.node.slug.current].join("")
     reporter.info(`Creating landing page: ${path}`)
 
     createPage({

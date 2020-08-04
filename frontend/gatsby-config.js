@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -25,11 +26,11 @@ module.exports = {
         token: process.env.GATSBY_SANITY_TOKEN,
         overlayDrafts: true,
         watchMode: process.env.NODE_ENV === "development" ? true : false,
-      }
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
     // {
     //   // resolve: `gatsby-plugin-manifest`,
     //   // options: {
