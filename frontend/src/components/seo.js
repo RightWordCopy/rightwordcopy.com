@@ -5,35 +5,35 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
+import React from "react"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { buildImageObj, imageUrlFor } from "../utils"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
+function SEO({ description, lang, meta, title, keywords, image, bodyAttr }) {
+  const { site } = useStaticQuery(detailsQuery)
+  const metaDescription =
+    description || (site.openGraph && site.openGraph.description) || ""
+  const siteTitle = (site && site.title) || ""
+  const siteAuthor =
+    (site && site.author && site.author.name) || "Virginia Grice"
+  const metaImage =
+    image && image.asset
+      ? imageUrlFor(buildImageObj(image)).width(1200).url()
+      : site.openGraph && site.openGraph.image
+      ? imageUrlFor(buildImageObj(site.openGraph.image)).width(1200).url()
+      : ""
 
-  const metaDescription = description || site.siteMetadata.description
-
+  const pageTitle = title || siteTitle
   return (
     <Helmet
+      bodyAttributes={bodyAttr}
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={pageTitle}
+      titleTemplate={pageTitle === siteTitle ? siteTitle : `%s | ${siteTitle}`}
       meta={[
         {
           name: `description`,
@@ -52,12 +52,16 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: siteAuthor,
         },
         {
           name: `twitter:title`,
@@ -67,7 +71,16 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+        .concat(
+          keywords && keywords.length > 0
+            ? {
+                name: "keywords",
+                content: keywords.join(", "),
+              }
+            : []
+        )
+        .concat(meta)}
     />
   )
 }
@@ -75,14 +88,56 @@ function SEO({ description, lang, meta, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
+  meta: PropTypes.array,
+  keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
 }
 
 export default SEO
+
+const detailsQuery = graphql`
+  query DefaultSEOQuery {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      openGraph {
+        title
+        description
+        image {
+          alt
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+            metadata {
+              lqip
+              dimensions {
+                aspectRatio
+                width
+                height
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

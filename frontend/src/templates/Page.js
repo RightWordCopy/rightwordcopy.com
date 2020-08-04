@@ -7,8 +7,12 @@ import Hero from "../components/Hero"
 import Layout from "../components/layout"
 import PageHeader from "../components/PageHeader"
 import Portfolio from "../components/Portfolio"
+import SEO from "../components/seo"
 const PageTemplate = ({
-  pageContext: { page, meta },
+  pageContext: {
+    page,
+    meta: { title, description, image },
+  },
   location: { pathname },
 }) => {
   // return components from _rawContent that are not disabled
@@ -51,9 +55,9 @@ const PageTemplate = ({
     })
 
   const menuItems = page.navMenu && (page.navMenu.items || [])
-
   return (
     <Layout className={pathname.replace("/", "")} navMenuItems={menuItems}>
+      <SEO title={title} description={description} image={image} />
       {content}
     </Layout>
   )
