@@ -24,6 +24,9 @@ async function createLandingPages(
             openGraph {
               title
               description
+              image {
+                ...SanityImage
+              }
             }
             useSiteTitle
             includeInSitemap
@@ -73,10 +76,9 @@ async function createLandingPages(
       : openGraph.title
     meta.description =
       openGraph.description || result.data.site.openGraph.description
-    meta.image = openGraph.image || result.data.site.openGraph.image
+    meta.image = !useSiteTitle && openGraph.image
     const path = [pathPrefix, slug.current, "/"].join("")
     reporter.info(`Creating landing page: ${path}`)
-
     createPage({
       path,
       component: require.resolve("./src/templates/Page.js"),
@@ -126,7 +128,6 @@ async function createPortfolioPages(
   if (result.errors) throw result.errors
 
   const portfolioEdges = (result.data.allSanityPortfolio || {}).edges || []
-  const count = result.data.allSanityPortfolio.totalCount
   portfolioEdges.forEach(edge => {
     const prev = edge.previous
     const next = edge.next

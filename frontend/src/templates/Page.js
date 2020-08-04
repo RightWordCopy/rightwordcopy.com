@@ -11,6 +11,7 @@ import SEO from "../components/seo"
 const PageTemplate = ({
   pageContext: {
     page,
+    meta,
     meta: { title, description, image },
   },
   location: { pathname },
@@ -53,7 +54,6 @@ const PageTemplate = ({
       }
       return el
     })
-
   const menuItems = page.navMenu && (page.navMenu.items || [])
   return (
     <Layout className={pathname.replace("/", "")} navMenuItems={menuItems}>

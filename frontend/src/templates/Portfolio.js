@@ -1,9 +1,10 @@
 import BackgroundImage from "gatsby-background-image"
 import React from "react"
-import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
+import { GoChevronLeft, GoChevronRight } from "react-icons/go"
 import Figure from "../components/Figure"
 import Layout from "../components/layout"
 import PortableText from "../components/PortableText"
+import SEO from "../components/seo"
 import UniversalLink from "../components/UniversalLink"
 import { menuArray } from "../pages/thank-you"
 import { getFluidProps } from "../utils"
@@ -21,13 +22,18 @@ const PortfolioTemplate = ({
     pagination: { prev, next },
   },
 }) => {
-  console.log(prev, next)
   const hasIllustration =
     !!_rawFeaturedImage &&
     !_rawFeaturedImage?.disabled &&
     _rawFeaturedImage?.image?.asset
+
   return (
     <Layout navMenuItems={menuArray}>
+      <SEO
+        title={title}
+        description={_rawProjectExcerpt[0].children[0].text}
+        image={hasIllustration && _rawFeaturedImage.image}
+      />
       {hasIllustration && (
         <BackgroundImage
           Tag="section"
@@ -53,7 +59,9 @@ const PortfolioTemplate = ({
               </UniversalLink>
             )}
             {next && (
-              <UniversalLink to={next.slug.current}>Next Project <GoChevronRight /></UniversalLink>
+              <UniversalLink to={next.slug.current}>
+                Next Project <GoChevronRight />
+              </UniversalLink>
             )}
           </div>
         </aside>
