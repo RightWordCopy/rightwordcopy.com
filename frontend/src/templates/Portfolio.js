@@ -1,5 +1,6 @@
 import BackgroundImage from "gatsby-background-image"
 import React from "react"
+import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
 import Figure from "../components/Figure"
 import Layout from "../components/layout"
 import PortableText from "../components/PortableText"
@@ -48,11 +49,11 @@ const PortfolioTemplate = ({
           <div className="pagination">
             {prev && (
               <UniversalLink to={prev.slug.current}>
-                Previous Project
+                <GoChevronLeft /> Previous Project
               </UniversalLink>
             )}
             {next && (
-              <UniversalLink to={next.slug.current}>Next Project</UniversalLink>
+              <UniversalLink to={next.slug.current}>Next Project <GoChevronRight /></UniversalLink>
             )}
           </div>
         </aside>
