@@ -32,7 +32,7 @@ const Layout = ({ children, navMenuItems, className }) => {
       <main className={className}>{children}</main>
       <footer className="footer">
         <div className="wrapper">
-          <h2>Follow Me!</h2>
+          <h2>Follow Me</h2>
           {_rawSocialLinks && (
             <ul className="footer__social-links">
               {_rawSocialLinks &&
