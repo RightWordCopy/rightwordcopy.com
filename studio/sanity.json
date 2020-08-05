@@ -8,13 +8,17 @@
     "dataset": "production"
   },
   "plugins": [
+    "@sanity/dashboard",
     "@sanity/base",
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/color-input",
-    "media"
+    "media",
+    "dashboard-widget-netlify",
+    "dashboard-widget-document-list",
+    "dashboard-widget-structure-menu"
   ],
   "env": {
     "development": {
@@ -33,6 +37,10 @@
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
       "path": "./parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig.js"
     }
   ]
 }
