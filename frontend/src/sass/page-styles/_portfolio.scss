@@ -44,7 +44,22 @@
       font-family: var(--font-stack-fondamento);
     }
 
+    > .wrapper {
+      padding: 0;
+    }
+
+    > .portable-text {
+      @include respond(md) {
+        grid-template-columns: 1fr;
+      }
+
+      > p {
+        max-width: 100%;
+      }
+    }
+
     .pagination {
+      margin-top: 2rem;
       display: flex;
       justify-content: space-between;
       a {
