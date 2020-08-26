@@ -31,7 +31,7 @@ const validationSchema = Yup.object({
   business: Yup.string(),
   website: Yup.string().url("Please enter a valid URL"),
   email: Yup.string().email().required("Please enter your email"),
-  phone: Yup.string().max(10).min(7).required("Required"),
+  phone: Yup.string().max(10).min(7),
   message: Yup.string()
     .required("Required")
     .min(15, "Message is too short!")
@@ -45,7 +45,7 @@ const ContactForm = () => {
       initialValues={{
         name: "",
         business: "",
-        website: "",
+        website: "https://",
         email: "",
         phone: "",
         message: "",
